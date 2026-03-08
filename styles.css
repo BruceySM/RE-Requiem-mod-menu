@@ -1,408 +1,408 @@
-:root {
-  --bg-main: #0d1117;
-  --fg-main: #c9d1d9;
-  --card-bg: #161b22;
-  --card-border: #30363d;
-  --border-main: #21262d;
-  --primary-color: #2f81f7;
-  --primary-fg: #ffffff;
-  --accent-color: #238636;
-  --accent-fg: #ffffff;
-  --muted-color: #484f58;
-  --muted-fg: #8b949e;
-  --green-color: #7ce38b;
-  --red-color: #f85149;
-  --section-bg: #0f141a;
-}
-
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: 'Inter', sans-serif;
-  background-color: var(--bg-main);
-  color: var(--fg-main);
-  min-height: 100vh;
+    font-family: 'Roboto Mono', monospace;
+    background: #1a2f1a;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
-.txt-char {
-  display: inline;
+.hospital-container {
+    max-width: 1200px;
+    width: 100%;
+    background: #d8e0d0;
+    background-image: radial-gradient(circle at 10px 10px, rgba(139,0,0,0.05) 2px, transparent 2px);
+    background-size: 40px 40px;
+    border: 8px solid #4a6a4a;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: inset 0 0 30px rgba(0,0,0,0.3), 0 0 0 2px #8b0000;
+    position: relative;
 }
 
-.gh-header {
-  border-bottom: 1px solid var(--border-main);
-  background-color: var(--bg-main);
+/* Эффект крови на углах */
+.hospital-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle at top left, rgba(139,0,0,0.3), transparent);
+    pointer-events: none;
 }
 
-.gh-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 12px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.hospital-container::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle at bottom right, rgba(139,0,0,0.3), transparent);
+    pointer-events: none;
 }
 
-.gh-left {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+/* Шапка */
+.header-monitor {
+    background: #1a2f1a;
+    border: 4px solid #4a6a4a;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: inset 0 0 20px #32cd32;
 }
 
-.gh-logo {
-  fill: var(--fg-main);
+.hospital-logo {
+    font-family: 'Special Elite', cursive;
+    font-size: 24px;
+    color: #32cd32;
+    text-align: center;
+    text-shadow: 0 0 10px #32cd32;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
 }
 
-.gh-title-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
+.vital-signs {
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;
+    color: #ff8c00;
+    text-transform: uppercase;
 }
 
-.gh-title-main {
-  font-size: 18px;
-  font-weight: 500;
-  color: var(--fg-main);
-  line-height: 1.2;
+.vital-item {
+    padding: 5px 15px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 20px;
+    border: 1px solid #ff8c00;
 }
 
-.gh-title-sub {
-  font-size: 12px;
-  font-weight: 400;
-  color: var(--muted-fg);
-  line-height: 1;
+.heart-rate {
+    animation: heartbeat 1.5s ease-in-out infinite;
+    color: #ff4d4d;
 }
 
-.gh-verified {
-  padding: 4px 12px;
-  background-color: rgba(35, 134, 54, 0.2);
-  border: 1px solid rgba(35, 134, 54, 0.3);
-  border-radius: 6px;
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    25% { transform: scale(1.1); }
+    35% { transform: scale(1); }
+    45% { transform: scale(1.05); }
+    55% { transform: scale(1); }
 }
 
-.gh-verified span {
-  font-size: 14px;
-  color: var(--accent-color);
-  font-weight: 500;
+/* Монитор пациента */
+.patient-monitor {
+    background: #0a1a0a;
+    border: 6px solid #4a6a4a;
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 25px;
+    box-shadow: inset 0 0 30px #32cd32;
 }
 
-.gh-main {
-  max-width: 1024px;
-  margin: 0 auto;
-  padding: 32px 24px;
+.monitor-screen {
+    background: #000;
+    border: 2px solid #32cd32;
+    border-radius: 10px;
+    padding: 15px;
 }
 
-.gh-card {
-  background-color: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: 8px;
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+.ecg-container {
+    background: #000;
+    margin-bottom: 10px;
 }
 
-.gh-dl-section,
-.gh-install {
-  background-color: var(--section-bg);
-  border: 1px solid var(--border-main);
-  border-radius: 6px;
-  padding: 16px;
+.patient-info {
+    display: flex;
+    justify-content: space-between;
+    color: #32cd32;
+    font-size: 16px;
+    font-family: 'VT323', monospace;
+    padding: 5px 10px;
+    border-top: 1px solid #32cd32;
 }
 
-.gh-section-header {
-  margin-bottom: 16px;
+/* Сетка панелей */
+.panels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 25px;
 }
 
-.gh-section-header h2 {
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--fg-main);
-  margin-bottom: 8px;
+.panel-card {
+    background: #f0f0f0;
+    background: linear-gradient(145deg, #f0f0f0, #d8e0d0);
+    border: 3px solid #4a6a4a;
+    border-radius: 15px;
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 0 #2f4f4f, inset 0 0 10px rgba(139,0,0,0.2);
+    position: relative;
+    overflow: hidden;
 }
 
-.gh-section-header p {
-  color: var(--muted-fg);
-  font-size: 14px;
+.panel-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 0 #2f4f4f, inset 0 0 15px rgba(139,0,0,0.3);
 }
 
-.gh-status {
-  background-color: rgba(72, 79, 88, 0.2);
-  border: 1px solid var(--border-main);
-  border-radius: 6px;
-  padding: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.panel-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #8b0000, transparent);
+    animation: scan 3s linear infinite;
 }
 
-.gh-status-left {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+@keyframes scan {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
 }
 
-.gh-icon {
-  width: 24px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--primary-color);
+.panel-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #8b0000;
+    padding-bottom: 5px;
 }
 
-.gh-icon.spinner {
-  border: 2px solid var(--primary-color);
-  border-top: 2px solid transparent;
-  border-radius: 50%;
-  animation: spin-anim 1s linear infinite;
+.panel-icon {
+    font-size: 24px;
 }
 
-.gh-icon.success {
-  color: var(--green-color);
+.panel-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #2f4f4f;
+    flex: 1;
 }
 
-.gh-icon.error {
-  color: var(--red-color);
+.panel-status {
+    font-size: 12px;
+    padding: 3px 8px;
+    background: #2f4f4f;
+    color: #32cd32;
+    border-radius: 10px;
+    text-transform: uppercase;
 }
 
-@keyframes spin-anim {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+.panel-preview {
+    font-size: 14px;
+    color: #2f4f4f;
+    line-height: 1.8;
 }
 
-.gh-status-txt {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 14px;
-  color: var(--primary-color);
+.preview-line {
+    position: relative;
+    padding-left: 15px;
 }
 
-.gh-status-txt.success {
-  color: var(--green-color);
+.preview-line::before {
+    content: '►';
+    position: absolute;
+    left: 0;
+    color: #8b0000;
 }
 
-.gh-status-txt.error {
-  color: var(--red-color);
+/* Хирургический стол */
+.surgery-table {
+    background: #4a6a4a;
+    border: 4px solid #2f4f4f;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
 }
 
-.gh-retry {
-  padding: 4px 12px;
-  font-size: 14px;
-  border: 1px solid var(--border-main);
-  border-radius: 4px;
-  background-color: transparent;
-  color: var(--fg-main);
-  cursor: pointer;
-  transition: background-color 0.2s;
+.surgery-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
 }
 
-.gh-retry:hover {
-  background-color: rgba(72, 79, 88, 0.2);
+.surgery-title {
+    font-size: 20px;
+    color: #32cd32;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
-.gh-progress-wrapper {
-  margin-top: 12px;
+.surgery-status {
+    font-size: 16px;
+    color: #ff8c00;
+    padding: 5px 15px;
+    background: #1a2f1a;
+    border-radius: 20px;
+    border: 1px solid #ff8c00;
 }
 
-.gh-progress-bg {
-  width: 100%;
-  height: 4px;
-  background-color: rgba(72, 79, 88, 0.2);
-  border-radius: 2px;
-  overflow: hidden;
+.surgery-progress {
+    position: relative;
+    height: 30px;
+    background: #1a2f1a;
+    border: 2px solid #32cd32;
+    border-radius: 15px;
+    overflow: hidden;
 }
 
-.gh-progress-fill {
-  height: 100%;
-  background-color: var(--primary-color);
-  border-radius: 2px;
-  transition: width 0.3s ease;
-  width: 0%;
+.progress-track {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(45deg, #32cd32 0px, #32cd32 5px, #1a2f1a 5px, #1a2f1a 10px);
+    opacity: 0.2;
 }
 
-.gh-progress-txt {
-  font-size: 12px;
-  color: var(--muted-fg);
-  margin-top: 4px;
+.progress-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, #32cd32, #7fff7f);
+    border-radius: 15px;
+    transition: width 0.3s ease;
+    box-shadow: 0 0 20px #32cd32;
 }
 
-.gh-terminal {
-  background-color: rgba(0, 0, 0, 0.8);
-  border: 1px solid var(--border-main);
-  border-radius: 6px;
-  padding: 12px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
-  margin-top: 12px;
+/* Операционный лог */
+.operation-log {
+    background: #1a2f1a;
+    border: 3px solid #32cd32;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
 }
 
-.gh-terminal-header {
-  color: #7ce38b;
-  font-weight: bold;
-  margin-bottom: 8px;
-  font-size: 12px;
+.operation-log.collapsed {
+    max-height: 60px;
+    overflow: hidden;
 }
 
-.gh-terminal-content {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  max-height: 128px;
-  overflow-y: auto;
+.log-header {
+    background: #2f4f4f;
+    padding: 15px;
+    color: #32cd32;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    border-bottom: 2px solid #32cd32;
 }
 
-.gh-terminal-line {
-  color: #7ce38b;
-  opacity: 0.9;
+.log-entries {
+    padding: 15px;
+    max-height: 200px;
+    overflow-y: auto;
 }
 
-.gh-cursor-line {
-  display: flex;
-  color: #7ce38b;
+.log-entry {
+    font-family: 'VT323', monospace;
+    font-size: 16px;
+    color: #32cd32;
+    padding: 5px 0;
+    border-bottom: 1px dotted #32cd32;
 }
 
-.gh-cursor {
-  margin-left: 4px;
-  animation: blink-anim 1s infinite;
+/* Пульт управления */
+.control-panel {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
 }
 
-@keyframes blink-anim {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
+.control-btn {
+    padding: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Special Elite', cursive;
+    box-shadow: 0 5px 0 #2f4f4f;
 }
 
-.gh-video {
-  background-color: rgba(72, 79, 88, 0.3);
-  border-radius: 6px;
-  height: 320px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 16px;
+.control-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 0 #2f4f4f;
 }
 
-.gh-steps h3 {
-  font-size: 16px;
-  font-weight: 500;
-  color: var(--fg-main);
-  margin-bottom: 16px;
+.control-btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 3px 0 #2f4f4f;
 }
 
-.gh-steps-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.control-btn.emergency {
+    background: #8b0000;
+    color: white;
+    border: 2px solid #ff8c00;
 }
 
-.gh-step-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 14px;
+.control-btn.exit {
+    background: #2f4f4f;
+    color: #ff8c00;
+    border: 2px solid #ff8c00;
 }
 
-.gh-step-num {
-  width: 20px;
-  height: 20px;
-  background-color: var(--primary-color);
-  color: var(--primary-fg);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  font-weight: 500;
-  flex-shrink: 0;
+.control-btn:not(.emergency):not(.exit) {
+    background: #4a6a4a;
+    color: #32cd32;
+    border: 2px solid #32cd32;
 }
 
-.gh-step-txt {
-  color: var(--fg-main);
-}
-
-.gh-footer {
-  margin-top: 48px;
-  border-top: 1px solid var(--border-main);
-  background-color: var(--bg-main);
-  padding: 24px 0;
-}
-
-.gh-footer-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-
-.gh-footer-left {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.gh-footer-logo {
-  fill: var(--muted-fg);
-}
-
-.gh-copyright {
-  font-size: 12px;
-  color: var(--muted-fg);
-}
-
-.gh-footer-links {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.gh-footer-link {
-  font-size: 12px;
-  color: var(--muted-fg);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.gh-footer-link:hover {
-  color: var(--fg-main);
-}
-
-.gh-hidden {
-  display: none !important;
-}
-
+/* Адаптивность */
 @media (max-width: 768px) {
-  .gh-main {
-    padding: 16px;
-  }
-  
-  .gh-card {
-    padding: 16px;
-    gap: 16px;
-  }
-  
-  .gh-container {
-    padding: 8px 16px;
-  }
-  
-  .gh-video {
-    height: 240px;
-  }
-  
-  .gh-footer-container {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-  }
-  
-  .gh-footer-links {
-    gap: 16px;
-  }
+    .hospital-container {
+        padding: 15px;
+    }
+    
+    .vital-signs {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+    
+    .panels-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .control-panel {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Скроллбар */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a2f1a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #32cd32;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #7fff7f;
 }
